@@ -15,6 +15,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'haml-rails', '~> 1.0'
 gem 'aasm', '~> 4.12'
+gem 'friendly_id', '~> 5.2', '>= 5.2.3'
 
 group :development, :test do
   gem 'ffaker', '~> 2.7'
