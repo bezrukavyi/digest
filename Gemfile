@@ -16,6 +16,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml-rails', '~> 1.0'
 gem 'aasm', '~> 4.12'
 gem 'friendly_id', '~> 5.2', '>= 5.2.3'
+gem 'sucker_punch', '~> 2.0.4'
+gem 'rufus-scheduler', '~> 3.4', '>= 3.4.2'
 
 group :development, :test do
   gem 'ffaker', '~> 2.7'
@@ -24,6 +26,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'letter_opener_web', '~> 1.3'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
 end
