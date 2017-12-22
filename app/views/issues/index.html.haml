@@ -1,0 +1,5 @@
+%h1
+  Issues
+- @issues.each do |issue|
+  = "##{issue.release_number}: #{issue.name}"
+  = issue.release_at
