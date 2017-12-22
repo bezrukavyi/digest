@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   end
 
   get ':id', to: 'mailing_lists#show'
+
+  resources :mailing_lists, path: '', only: :show do
+    resources :issues, only: %i[index show]
+  end
 end
