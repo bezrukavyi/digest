@@ -18,10 +18,15 @@ gem 'aasm', '~> 4.12'
 gem 'friendly_id', '~> 5.2', '>= 5.2.3'
 gem 'sucker_punch', '~> 2.0.4'
 gem 'rufus-scheduler', '~> 3.4', '>= 3.4.2'
+gem 'simple_form', '~> 3.2', '>= 3.2.1'
+gem 'rectify', '~> 0.10.0'
+gem 'email_validator', '~> 1.6'
 
 group :development, :test do
   gem 'ffaker', '~> 2.7'
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
+  gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 

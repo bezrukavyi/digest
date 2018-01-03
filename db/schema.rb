@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171218224730) do
+ActiveRecord::Schema.define(version: 20180103202413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20171218224730) do
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "slug", null: false
+    t.string "slug"
     t.index ["slug"], name: "index_mailing_lists_on_slug", unique: true
   end
 
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20171218224730) do
     t.string "aasm_state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "confirmation_token"
     t.index ["email", "mailing_list_id"], name: "index_subscriptions_on_email_and_mailing_list_id", unique: true
     t.index ["mailing_list_id"], name: "index_subscriptions_on_mailing_list_id"
   end

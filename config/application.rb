@@ -28,5 +28,7 @@ module Digestify
     config.generators do |g|
       g.test_framework = :rspec
     end
+
+    config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
   end
 end

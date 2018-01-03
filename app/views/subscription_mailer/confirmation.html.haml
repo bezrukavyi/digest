@@ -1,0 +1,6 @@
+%h1
+  Subscription confirmation
+%div
+  = @mailing_list.name
+  = @subscription.id
+  = confirmation_url(@subscription)
