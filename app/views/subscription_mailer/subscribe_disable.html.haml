@@ -3,4 +3,4 @@
 %div
   = @mailing_list.name
   = @subscription.id
-  = confirmation_url(@subscription)
+  = subscribe_link(@subscription, :disable)

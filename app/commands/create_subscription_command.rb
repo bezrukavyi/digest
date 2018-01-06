@@ -1,4 +1,4 @@
-class CreateSubscription < Rectify::Command
+class CreateSubscriptionCommand < Rectify::Command
   attr_reader :mailing_list, :params
 
   def initialize(mailing_list, params)
@@ -11,7 +11,8 @@ class CreateSubscription < Rectify::Command
 
     return broadcast(:failure, subscription) unless subscription.save
 
-    SubscriptionConfirmEmail.call(subscription.id)
+    SubscribeMailJob.perform_async(subscription.id, :enable)
+
     broadcast(:success)
   end
 end

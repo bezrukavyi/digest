@@ -1,5 +1,2 @@
-require "rails_helper"
-
-RSpec.describe IssueMailer, type: :mailer do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe IssueMailer, type: :mailer do
 end

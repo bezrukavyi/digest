@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     resources :subscriptions, only: %i[new create]
   end
 
-  get :subscription_confirmation, to: 'subscriptions#subscribe', path: 'subscriptions/confirmation'
+  resources :subscriptions, only: %i[update]
+
+  get :subscribe, to: 'subscriptions#update', path: 'subscriptions/subscribe'
 end

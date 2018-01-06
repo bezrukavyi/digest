@@ -14,16 +14,14 @@ class Subscription < ApplicationRecord
     state :active
     state :canceled
 
-    event :confirm, after: :confirmation_token! do
-      transitions from: :pending, to: :active
+    event :activate, after: :confirmation_token! do
+      transitions from: %i[pending canceled], to: :active
     end
 
     event :cancel, after: :confirmation_token! do
       transitions from: :active, to: :canceled
     end
   end
-
-  private
 
   def confirmation_token!
     loop do

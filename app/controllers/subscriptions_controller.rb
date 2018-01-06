@@ -1,14 +1,14 @@
 class SubscriptionsController < ApplicationController
   include Rectify::ControllerHelpers
 
-  before_action :mailing_list, only: %i[create new]
+  load_resource :mailing_list, find_by: :slug, only: %i[new create]
 
   def new
     @subscription = Subscription.new
   end
 
   def create
-    CreateSubscription.call(@mailing_list, permit_create_params) do
+    CreateSubscriptionCommand.call(@mailing_list, permit_create_params) do
       on(:success) { redirect_to '/' }
       on(:failure) do |subscription|
         expose(subscription: subscription)
@@ -17,10 +17,10 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-  def subscribe
-    SubscribeSubscription.call(params) do
-      on(:success) { redirect_to '/' }
-      on(:failure) { redirect_to '/failure' }
+  def update
+    UpdateSubscriptionCommand.call(params) do
+      on(:success_subsribe) { redirect_to '' }
+      on(:failure_subsribe) { redirect_to '/failure_subsribe' }
     end
   end
 

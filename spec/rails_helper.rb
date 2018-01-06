@@ -4,20 +4,21 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 
 require 'spec_helper'
 require 'rspec/rails'
-require 'factory_girl_rails'
+require 'factory_bot_rails'
 require 'ffaker'
 require 'rectify/rspec'
 require 'wisper/rspec/stub_wisper_publisher'
 require 'shoulda/matchers'
 require 'cancan/matchers'
+require 'aasm/rspec'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
 
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
-  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include FactoryBot::Syntax::Methods
+  config.include Rectify::RSpec::Helpers, type: :command
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
