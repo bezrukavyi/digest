@@ -3,9 +3,12 @@
     .container
       %h1.mt-65.center.mb-35.title= @mailing_list.name.humanize
       %h2.mb-35.center.subtitle= @mailing_list.description.titleize
-      .mb-25.overflow-auto
+      .mb-25
         = render 'subscribe_form', mailing_list: @mailing_list, subscription: @subscription, autofocus: true
-      .description.font-16.mb-35.center= "Check out our latest issue (#{'NUMBER'}) for a sample of what we're about."
+      .description.font-16.mt-20.mb-35.center
+        Check out our latest
+        = link_to "issue ##{@issue.release_number}", issue_path(@issue)
+        for a sample of what we're about
       .bottom.font-10.center Published by Cooperpress. Our privacy and anti-spam policies. We take both seriously.
 
   .col-md-7.center{ style: "background: red;" }
