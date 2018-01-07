@@ -2,4 +2,4 @@
   Issues
 - @issues.each do |issue|
   = "##{issue.release_number}: #{issue.name}"
-  = issue.release_at
+  = pretty_date(issue.release_at)
