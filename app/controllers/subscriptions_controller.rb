@@ -29,8 +29,4 @@ class SubscriptionsController < ApplicationController
   def permit_create_params
     params.require(:subscription).permit(:email)
   end
-
-  def mailing_list
-    @mailing_list = MailingList.friendly.find(params[:mailing_list_id])
-  end
 end
