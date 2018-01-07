@@ -1,0 +1,13 @@
+- issue.issue_items.top.each do |item|
+  %table.gowide{:align => "left", :cellpadding => "0", :cellspacing => "0", :style => "border-collapse: collapse", :width => "100%"}
+    %tbody
+      %tr
+        %td
+          %div{:style => "color: #dd0000; font-weight: normal; font-size: 12px; line-height: 14px; text-transform: uppercase; margin-top: 2px; font-family: verdana, arial, sans-serif"}
+            = item.source
+          %div{:style => "font-size: 18px; margin: 2px 0px"}
+            = link_to item.title, item.link, :style => "display: block; color: #0055bb; line-height: 24px; text-decoration: underline; font-weight: normal", :target => "_blank"
+          %div{:style => "font-size: 13px; line-height: 17px; margin-top: 4px"}
+            = item.description
+          %br
+    %br{:clear => "all", :style => "clear: both"}
