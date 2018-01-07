@@ -23,6 +23,7 @@ gem 'rectify', '~> 0.10.0'
 gem 'email_validator', '~> 1.6'
 gem 'operators-service', '~> 0.1.0'
 gem 'cancancan', '~> 2.1', '>= 2.1.2'
+gem 'dotenv-rails', '~> 2.2'
 
 group :development, :test do
   gem 'ffaker', '~> 2.7'

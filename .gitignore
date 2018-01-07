@@ -19,3 +19,8 @@
 .byebug_history
 
 vendor/bundle
+
+.env
+.env.production
+.env.staging
+.env.dev
