@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20180106160511) do
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "slug", null: false
+    t.string "slug"
     t.index ["slug"], name: "index_mailing_lists_on_slug", unique: true
   end
 

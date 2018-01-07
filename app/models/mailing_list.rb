@@ -7,4 +7,8 @@ class MailingList < ApplicationRecord
 
   validates :name, :description, :slug, presence: true
   validates :slug, uniqueness: true
+
+  def last_issue
+    @last_issue ||= issues.released.last
+  end
 end
