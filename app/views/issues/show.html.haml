@@ -1,1 +1,11 @@
-= render 'issues/issue', mailing_list: @issue.mailing_list, issue: @issue
+.container
+  = render 'mailing_lists/header', mailing_list: @mailing_list
+  .row
+    .col-12
+      = render 'subscriptions/subscribe_form', mailing_list: @mailing_list, subscription: @subscription
+    .col-12
+      .row.justify-content-between.mt-30.mb-30
+        .col.left= prev_issue(@issue)
+        .col.right= next_issue(@issue)
+    .col-12
+      = render 'issues/issue', mailing_list: @issue.mailing_list, issue: @issue

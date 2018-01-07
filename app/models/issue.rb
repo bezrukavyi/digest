@@ -10,7 +10,18 @@ class Issue < ApplicationRecord
 
   before_create :increment_release
 
+  def next
+    @next ||= released_issues.where('release_number > ?', release_number).first
+  end
+
+  def prev
+    @prev ||= released_issues.where('release_number < ?', release_number).last
+  end
   private
+
+  def released_issues
+    mailing_list.issues.released
+  end
 
   def increment_release
     self.release_number = Issue.where(mailing_list_id: self.mailing_list_id).last&.release_number.to_i + 1

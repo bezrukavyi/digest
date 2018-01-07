@@ -1,6 +1,6 @@
 = simple_form_for [mailing_list, subscription] do |field|
-  .inline.mb-20
-    .mr-20.grow-1= field.input :email, autofocus: true, label: false
+  .inline
+    .mr-20.grow-1= field.input :email, autofocus: local_assigns[:autofocus], label: false
     = field.button :submit, 'Subscribe', class: 'btn btn-primary'
 
-  %p.info.center.font-12= "Join #{mailing_list.subscriptions.count} other subscribers today."
+  = yield if block_given?
