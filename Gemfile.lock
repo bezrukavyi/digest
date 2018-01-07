@@ -43,11 +43,17 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
+    autoprefixer-rails (7.2.4)
+      execjs
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     bindex (0.5.0)
+    bootstrap (4.0.0.beta3)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.3, < 2)
+      sass (>= 3.5.2)
     builder (3.2.3)
     byebug (9.1.0)
     cancancan (2.1.2)
@@ -144,6 +150,7 @@ GEM
     operators-service (0.1.1)
       dry-monads (~> 0.3.1)
     pg (0.21.0)
+    popper_js (1.12.9)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -270,6 +277,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm (~> 4.12)
+  bootstrap (~> 4.0.0.beta3)
   byebug
   cancancan (~> 2.1, >= 2.1.2)
   coffee-rails (~> 4.2)
