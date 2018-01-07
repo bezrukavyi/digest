@@ -4,10 +4,6 @@ class SubscriptionsController < ApplicationController
   load_resource :mailing_list, find_by: :slug, only: %i[new edit create]
   load_resource :last_issue, through: :mailing_list, only: %i[new edit create], singleton: true
 
-  def new
-    @subscription = Subscription.new
-  end
-
   def create
     CreateSubscriptionCommand.call(@mailing_list, permit_create_params) do
       on(:success) { redirect_to '/' }

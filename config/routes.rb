@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :mailing_lists, path: '', only: :show do
     resources :issues, only: %i[index show]
-    resources :subscriptions, only: %i[new create]
+    resources :subscriptions, only: %i[create]
   end
 
   get :subscribe, to: 'subscriptions#update', path: 'subscriptions/subscribe'
