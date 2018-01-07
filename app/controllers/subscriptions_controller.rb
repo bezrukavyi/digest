@@ -1,7 +1,8 @@
 class SubscriptionsController < ApplicationController
   include Rectify::ControllerHelpers
 
-  load_resource :mailing_list, find_by: :slug, only: %i[new create]
+  load_resource :mailing_list, find_by: :slug, only: %i[new edit create]
+  load_resource :last_issue, through: :mailing_list, only: %i[new edit], singleton: true
 
   def new
     @subscription = Subscription.new
