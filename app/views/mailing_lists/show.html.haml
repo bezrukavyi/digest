@@ -1,4 +1,13 @@
-= @mailing_list.name
-= @mailing_list.description
+.row
+  .col-md-5
+    .container
+      %h1.mt-65.center.mb-35.title= @mailing_list.name.humanize
+      %h2.mb-35.center.subtitle= @mailing_list.description.titleize
+      .mb-25.overflow-auto
+        = render 'subscribe_form', mailing_list: @mailing_list, subscription: @subscription, autofocus: true
+      .description.font-16.mb-35.center= "Check out our latest issue (#{'NUMBER'}) for a sample of what we're about."
+      .bottom.font-10.center Published by Cooperpress. Our privacy and anti-spam policies. We take both seriously.
 
-= render 'issues/issue', mailing_list: @mailing_list, issue: @issue
+  .col-md-7.center{ style: "background: red;" }
+    = render layout: "layouts/iphone" do
+      = render 'issues/issue', mailing_list: @mailing_list, issue: @issue
