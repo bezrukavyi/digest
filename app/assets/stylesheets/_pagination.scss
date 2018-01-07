@@ -1,0 +1,11 @@
+.pagination {
+  .prev {
+    margin-right: 10px;
+  }
+  .page {
+    margin-right: 10px;
+    &:last {
+      margin-right: 0px;
+    }
+  }
+}

@@ -1,0 +1,6 @@
+.row.justify-content-between.mt-30.mb-30
+  .col.subtitle= mailing_list.name
+  .row
+    .col= link_to 'Archives', mailing_list_issues_path(mailing_list)
+    .col= link_to 'Latest', issue_path(mailing_list.last_issue)
+    .col RSS

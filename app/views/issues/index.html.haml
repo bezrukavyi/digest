@@ -1,5 +1,15 @@
-%h1
-  Issues
-- @issues.each do |issue|
-  = "##{issue.release_number}: #{issue.name}"
-  = pretty_date(issue.release_at)
+.container
+  = render 'mailing_lists/header', mailing_list: @mailing_list
+
+  .row.justify-content-center
+    .col
+      %h1.title.mb-40 Archives
+
+      .issues-list
+        - @issues.each do |issue|
+          .issues-item
+            = link_to "Issue ##{issue.release_number}", issue_path(issue)
+            —
+            = pretty_date(issue.release_at)
+
+        .mt-20= paginate(@issues)
