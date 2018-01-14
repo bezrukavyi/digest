@@ -17,6 +17,7 @@ class Issue < ApplicationRecord
   def prev
     @prev ||= released_issues.where('release_number < ?', release_number).last
   end
+
   private
 
   def released_issues

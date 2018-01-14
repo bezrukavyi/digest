@@ -6,7 +6,7 @@
           %div{:style => "color: #dd0000; font-weight: normal; font-size: 12px; line-height: 14px; text-transform: uppercase; margin-top: 2px; font-family: verdana, arial, sans-serif"}
             = item.source
           %div{:style => "font-size: 18px; margin: 2px 0px"}
-            = link_to item.title, item.link, :style => "display: block; color: #0055bb; line-height: 24px; text-decoration: underline; font-weight: normal", :target => "_blank"
+            = link_to item.title, link_path(item.link), :style => "display: block; color: #0055bb; line-height: 24px; text-decoration: underline; font-weight: normal", :target => "_blank"
           %div{:style => "font-size: 13px; line-height: 17px; margin-top: 4px"}
             = item.description
           %br

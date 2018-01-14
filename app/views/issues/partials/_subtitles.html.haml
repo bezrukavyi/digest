@@ -4,7 +4,7 @@
   %ul{:style => "padding-left: 18px; margin-top: 10px; list-style-type: square"}
     - subtitle.issue_items.each do |item|
       %li{:style => "color: #ee5533; margin-bottom: 16px; font-size: 16px; line-height: 16px"}
-        = link_to item.title, item.link, :style => "color: #0055bb; margin-right: 4px; line-height: 20px; font-weight: normal", :target => "_blank"
+        = link_to item.title, link_path(item.link), :style => "color: #0055bb; margin-right: 4px; line-height: 20px; font-weight: normal", :target => "_blank"
         %br
         %span{:style => "font-size: 12px; color: #666666"}
           = item.description
