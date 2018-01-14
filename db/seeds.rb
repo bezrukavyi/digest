@@ -14,15 +14,7 @@ if Rails.env.development?
         name: FFaker::Lorem.sentence
       )
 
-      10.times do
-        IssueItem.create(
-          issue: issue,
-          source: FFaker::Name.name,
-          link: FFaker::Internet.http_url,
-          title:  FFaker::Lorem.sentence,
-          description: FFaker::Lorem.sentence
-        )
-      end
+      FactoryBot.create_list(:issue_item, 10, :with_link, issue: issue)
 
       3.times do
         subtitle = Subtitle.create(
@@ -30,16 +22,7 @@ if Rails.env.development?
           issue: issue
         )
 
-        3.times do
-          IssueItem.create(
-            issue: issue,
-            subtitle: subtitle,
-            source: FFaker::Name.name,
-            link: FFaker::Internet.http_url,
-            title:  FFaker::Lorem.sentence,
-            description: FFaker::Lorem.sentence
-          )
-        end
+        FactoryBot.create_list(:issue_item, 3, :with_link, subtitle: subtitle, issue: issue)
       end
     end
   end

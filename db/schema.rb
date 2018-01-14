@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180106160511) do
+ActiveRecord::Schema.define(version: 20180114142953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20180106160511) do
   create_table "issue_items", force: :cascade do |t|
     t.bigint "issue_id"
     t.string "source", null: false
-    t.string "link", null: false
     t.string "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,6 +48,14 @@ ActiveRecord::Schema.define(version: 20180106160511) do
     t.string "name"
     t.integer "release_number"
     t.index ["mailing_list_id"], name: "index_issues_on_mailing_list_id"
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.string "url"
+    t.bigint "issue_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["issue_item_id"], name: "index_links_on_issue_item_id"
   end
 
   create_table "mailing_lists", force: :cascade do |t|
@@ -81,6 +88,7 @@ ActiveRecord::Schema.define(version: 20180106160511) do
 
   add_foreign_key "issue_items", "issues"
   add_foreign_key "issues", "mailing_lists"
+  add_foreign_key "links", "issue_items"
   add_foreign_key "subscriptions", "mailing_lists"
   add_foreign_key "subtitles", "issues"
 end
