@@ -3,6 +3,6 @@ class ApplicationMailer < ActionMailer::Base
   layout 'mailer'
 
   def from(mailing_list)
-    "#{mailing_list.name} <no-reply@digestify.co>"
+    "#{mailing_list.name} <no-reply@digestlist.co>"
   end
 end
