@@ -1,4 +1,6 @@
 class IssueItem < ApplicationRecord
+  default_scope { includes(:link) }
+
   belongs_to :issue
   belongs_to :subtitle, optional: true
 
