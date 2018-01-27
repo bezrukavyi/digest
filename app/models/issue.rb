@@ -1,4 +1,7 @@
 class Issue < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: %i[slugged]
+
   belongs_to :mailing_list
   has_many :subtitles
   has_many :issue_items

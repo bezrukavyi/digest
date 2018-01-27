@@ -14,11 +14,11 @@ module IssuesHelper
   end
 
   def issue_path(issue)
-    mailing_list_issue_path(issue.mailing_list, issue.release_number)
+    mailing_list_issue_path(issue.mailing_list, issue.slug)
   end
 
   def issues_active_class(issue, current_issue)
     return unless current_issue
-    issue.id == current_issue.id ? 'active' : ''
+    issue == current_issue ? 'active' : ''
   end
 end

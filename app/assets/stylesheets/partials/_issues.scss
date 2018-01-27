@@ -5,3 +5,8 @@
     margin-bottom: 0px;
   }
 }
+.issue-container {
+  @include media-breakpoint-down(md) {
+    flex-direction: column-reverse !important;
+  }
+}
