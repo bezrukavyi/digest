@@ -1,9 +1,10 @@
 = render 'partials/alerts'
 .row.mt-35
-  .col-md-auto.mb-35.mr-auto.title= mailing_list.name
+  .col-md-auto.mb-35.mr-auto.mailing-list-title
+    = link_to mailing_list.name, mailing_list
   .col-md-auto.mb-35
     .row.align-items-center
-      .col= link_to t('header.archives'), mailing_list_issues_path(mailing_list)
-      .col= link_to t('header.latest'), issue_path(mailing_list.last_issue)
-      .col= link_to t('header.rss'), mailing_list_issues_path(mailing_list, format: :rss)
+      .col= active_link_to t('header.archives'), mailing_list_issues_path(mailing_list), class: 'header-link', active: 'active'
+      .col= active_link_to t('header.latest'), issue_path(mailing_list.last_issue), class: 'header-link', active: 'active'
+      .col= active_link_to t('header.rss'), mailing_list_issues_path(mailing_list, format: :rss), class: 'header-link', active: 'active'
       .col= link_to t('subscribe'), mailing_list, class: 'btn btn-blue-gradient'

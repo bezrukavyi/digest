@@ -9,9 +9,11 @@
         %h2.mb-35.center.subtitle= @mailing_list.description.titleize
         .mb-25
           = render 'subscribe_form', mailing_list: @mailing_list, subscription: @subscription, autofocus: true
-        .description.font-16.mt-20.mb-35.center
+        .description.font-16.mt-20.mb-25.center
           = t('.check_latest', href: issue_release_path(@issue)).html_safe
-        .bottom.font-10.center= t('.published_by')
+        - if @mailing_list.issues.count > 1
+          .bottom.font-16.center
+            = link_to "← #{t('header.archives')}", mailing_list_issues_path(@mailing_list), class: 'btn'
 
     .col-lg-6.middle-align.justify-content-center.center{ style: "background: -webkit-gradient(linear, left top, left bottom, from(#2898fb), to(#0171fd)) !important; background: linear-gradient(#2898fb, #0171fd) !important;" }
       = render layout: "layouts/iphone" do
