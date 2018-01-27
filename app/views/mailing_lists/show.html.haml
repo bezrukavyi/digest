@@ -1,16 +1,18 @@
-.row
-  .col-md-5
-    .container
-      %h1.mt-65.center.mb-35.title= @mailing_list.name.humanize
-      %h2.mb-35.center.subtitle= @mailing_list.description.titleize
-      .mb-25
-        = render 'subscribe_form', mailing_list: @mailing_list, subscription: @subscription, autofocus: true
-      .description.font-16.mt-20.mb-35.center
-        Check out our latest
-        = link_to "issue ##{@issue.release_number}", issue_path(@issue)
-        for a sample of what we're about
-      .bottom.font-10.center Published by Cooperpress. Our privacy and anti-spam policies. We take both seriously.
+.max-container
+  .row
+    .col
+      = render 'partials/alerts'
+  .row.full-height
+    .col-lg-6.subscribe__mailing-list
+      .container
+        %h1.mt-65.center.mb-35.title= @mailing_list.name.humanize
+        %h2.mb-35.center.subtitle= @mailing_list.description.titleize
+        .mb-25
+          = render 'subscribe_form', mailing_list: @mailing_list, subscription: @subscription, autofocus: true
+        .description.font-16.mt-20.mb-35.center
+          = t('.check_latest', href: issue_release_path(@issue)).html_safe
+        .bottom.font-10.center= t('.published_by')
 
-  .col-md-7.center{ style: "background: red;" }
-    = render layout: "layouts/iphone" do
-      = render 'issues/issue', mailing_list: @mailing_list, issue: @issue
+    .col-lg-6.middle-align.justify-content-center.center{ style: "background: -webkit-gradient(linear, left top, left bottom, from(#2898fb), to(#0171fd)) !important; background: linear-gradient(#2898fb, #0171fd) !important;" }
+      = render layout: "layouts/iphone" do
+        = render 'issues/issue', mailing_list: @mailing_list, issue: @issue

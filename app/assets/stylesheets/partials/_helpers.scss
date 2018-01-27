@@ -36,7 +36,9 @@
     padding-top: #{$size}px;
   }
 }
-
 .overflow-auto {
   overflow: auto;
+}
+.lightblue-gradient {
+    background: linear-gradient(#2898fb,#01d8fd);
 }

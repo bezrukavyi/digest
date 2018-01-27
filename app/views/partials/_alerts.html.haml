@@ -1,0 +1,7 @@
+.flash-list
+  - flash.each do |key, message|
+    - next unless flash_class(key)
+    .flash-item.alert-dismissible.fade.show{ class: flash_class(key), role: :alert }
+      %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+        %span{"aria-hidden" => "true"} ×
+      %span= message

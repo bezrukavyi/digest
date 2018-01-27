@@ -2,10 +2,12 @@
   = render 'mailing_lists/header', mailing_list: @mailing_list
   .row
     .col-12
-      = render 'mailing_lists/subscribe_form', mailing_list: @mailing_list, subscription: @subscription
-    .col-12
-      .row.justify-content-between.mt-30.mb-30
+      .row.justify-content-between.mb-30
         .col.left= prev_issue(@issue)
         .col.right= next_issue(@issue)
     .col-12
-      = render 'issues/issue', mailing_list: @issue.mailing_list, issue: @issue
+      .row
+        .col-lg-3.issues-card-mono.scroll-to-bottom
+          = render 'issues/issues_list', issues: @issues, current_issue: @issue
+        .col-lg-9.center.scroll-to-bottom
+          = render 'issues/issue', mailing_list: @issue.mailing_list, issue: @issue

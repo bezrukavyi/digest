@@ -1,13 +1,9 @@
-- issue.issue_items.top.each do |item|
+- issue.issue_items.top.each_with_index do |item, index|
   %table.gowide{:align => "left", :cellpadding => "0", :cellspacing => "0", :style => "border-collapse: collapse", :width => "100%"}
     %tbody
       %tr
-        %td
-          %div{:style => "color: #dd0000; font-weight: normal; font-size: 12px; line-height: 14px; text-transform: uppercase; margin-top: 2px; font-family: verdana, arial, sans-serif"}
-            = item.source
-          %div{:style => "font-size: 18px; margin: 2px 0px"}
-            = link_to item.title, link_path(item.link), :style => "display: block; color: #0055bb; line-height: 24px; text-decoration: underline; font-weight: normal", :target => "_blank"
-          %div{:style => "font-size: 13px; line-height: 17px; margin-top: 4px"}
-            = item.description
-          %br
-    %br{:clear => "all", :style => "clear: both"}
+        %td.issue-top-items
+          .issue-top-items__title
+            = link_to item.title.titleize, link_path(item.link), class: 'issue-top-items__link', target: "_blank"
+          .issue-top-items__description= item.description
+          .issue-top-items__source= item.source

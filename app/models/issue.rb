@@ -5,6 +5,7 @@ class Issue < ApplicationRecord
 
   scope :awaiting, -> { where(published: false).where("release_at <= ?", Time.zone.now) }
   scope :released, -> { where(published: true) }
+  scope :newest, -> { order(created_at: :desc) }
 
   validates :name, presence: true
 

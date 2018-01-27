@@ -1,6 +1,6 @@
 .flex-wrap
   = simple_form_for [mailing_list, subscription], html: { class: 'inline' } do |field|
     .mr-20.grow-1= field.input :email, autofocus: local_assigns[:autofocus], label: false
-    = field.button :submit, 'Subscribe', class: 'btn btn-primary'
+    = field.button :submit, t('subscribe'), class: 'btn btn-blue-gradient'
 
     = yield if block_given?

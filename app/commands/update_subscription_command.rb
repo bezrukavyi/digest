@@ -13,6 +13,10 @@ class UpdateSubscriptionCommand < Rectify::Command
   def subscribe
     subscription = Subscription.find_by(confirmation_token: params[:confirmation_token])
     subscribe_action = SubscribeSubscriptionService.call(subscription, params)
-    subscribe_action.success? ? broadcast(:success_subsribe) : broadcast(:failure_subsribe)
+    if subscribe_action.success?
+      broadcast(:success_subsribe, subscription)
+    else
+      broadcast(:failure_subsribe, subscription)
+    end
   end
 end

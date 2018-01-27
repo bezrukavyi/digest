@@ -1,0 +1,8 @@
+.issues-card__container
+  - issues.each do |issue|
+    .issues-card__wrap
+      = link_to issue_path(issue), class: "issues-card #{issues_active_class(issue, local_assigns[:current_issue])}" do
+        .issues-card__header
+          .issues-card__release= "##{issue.release_number}"
+          .issues-card__date= pretty_date(issue.release_at)
+        .issues-card__name= issue.name.truncate(60)

@@ -1,18 +1,18 @@
 %tr
-  %td{:style => "background-color: #dd0000"}
-    %table{:align => "left", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+  %td.issue-html__header
+    %table{align: "left", cellpadding: "0", cellspacing: "0", width: "100%"}
       %tbody
         %tr
-          %td.block{:align => "left", :style => "padding: 6px 12px;"}
-            %table.gowide{:align => "left", :width => "50%"}
+          %td.block
+            %table.gowide{align: "left", width: "50%"}
               %tbody
                 %tr
                   %td
-                    %span{:style => "line-height: 36px; font-size: 23px; color: #dd0000; font-weight: bold; color: #ffffff; -webkit-font-smoothing: antialiased;"}
-                      = mailing_list.name
-            %table.gowide.lonmo{:align => "left", :style => "text-align: right", :width => "50%"}
+                    %span.title= mailing_list.name
+                    %div{style: "height: 10px;"}
+                    %span.title.subtitle= "##{issue.release_number}"
+            %table.gowide.lonmo{align: "left", style: "text-align: right", width: "50%"}
               %tbody
                 %tr
                   %td
-                    %span{:style => "font-size: 14px; line-height: 36px; font-weight: normal; color: #ffffff"}
-                      = "Issue #{issue.release_number} — #{pretty_date(issue.release_at)}"
+                    %span.date= pretty_date(issue.release_at)

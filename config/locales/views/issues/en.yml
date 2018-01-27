@@ -1,0 +1,7 @@
+en:
+  issues:
+    release: 'Issue #%{release}'
+    index:
+      title: 'Archives'
+    show:
+      latest: 'Latest'

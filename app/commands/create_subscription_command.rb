@@ -13,6 +13,6 @@ class CreateSubscriptionCommand < Rectify::Command
 
     SubscribeMailJob.perform_async(subscription.id, :enable)
 
-    broadcast(:success)
+    broadcast(:success, subscription)
   end
 end
