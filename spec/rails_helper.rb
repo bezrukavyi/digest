@@ -11,6 +11,7 @@ require 'wisper/rspec/stub_wisper_publisher'
 require 'shoulda/matchers'
 require 'cancan/matchers'
 require 'aasm/rspec'
+require 'sucker_punch/testing/inline'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
 
