@@ -5,5 +5,5 @@
     .row.align-items-center
       .col= link_to t('header.archives'), mailing_list_issues_path(mailing_list)
       .col= link_to t('header.latest'), issue_path(mailing_list.last_issue)
-      .col= link_to t('header.rss')
+      .col= link_to t('header.rss'), mailing_list_issues_path(mailing_list, format: :rss)
       .col= link_to t('subscribe'), mailing_list, class: 'btn btn-blue-gradient'

@@ -1,14 +1,14 @@
 .issue-html
-  = render 'issues/partials/style'
+  = render 'issues/partials/style.html.haml'
   %table.issue-html__table
     %tbody
       %tr
         %td{align: "center", valign: "top"}
           %table.container
             %tbody
-              = render 'issues/partials/header', mailing_list: mailing_list, issue: issue
+              = render 'issues/partials/header.html.haml', mailing_list: mailing_list, issue: issue
               %tr
                 %td.issue-html__content
-                  = render 'issues/partials/description', issue: issue
-                  = render 'issues/partials/top_items', issue: issue
-                  = render 'issues/partials/subtitles', subtitles: issue.subtitles
+                  = render 'issues/partials/description.html.haml', issue: issue
+                  = render 'issues/partials/top_items.html.haml', issue: issue
+                  = render 'issues/partials/subtitles.html.haml', subtitles: issue.subtitles
