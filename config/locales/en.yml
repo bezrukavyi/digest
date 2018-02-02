@@ -31,7 +31,9 @@
 
 en:
   header:
-    archives: 'Archives'
+    archives: 'Archive'
     latest: 'Latest'
     rss: 'RSS'
   subscribe: 'Subscribe'
+  subscription:
+    success_subsribe: "You have successfully subscribed"

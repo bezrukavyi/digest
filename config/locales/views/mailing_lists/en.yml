@@ -3,3 +3,10 @@ en:
     show:
       check_latest: "Check out our latest %{href} for a sample of what we're about"
       published_by: 'Published by Cooperpress. Our privacy and anti-spam policies. We take both seriously.'
+    subscription_mail:
+      hello: "Hi, it's a good idea to confirm your email address"
+      confirm_subscription: "Confirm subscription"
+      unsubscribe: "Unsubscribe"
+      invalid_token: "Invalid subscription link"
+      success_enable: "You have successfully subscribed"
+      success_disable: "You have successfully unsubscribed"

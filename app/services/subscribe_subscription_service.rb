@@ -15,7 +15,7 @@ class SubscribeSubscriptionService < Operators::Service
     return failure unless subscribe
 
     subscribe_type = subscription.active? ? :disable : :enable
-    SubscribeMailJob.perform_async(subscription.id, subscribe_type)
+    SubscribeMailJob.perform_async(subscription.id, subscribe_type) if subscribe_type == :enable
 
     success
   end
