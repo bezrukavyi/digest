@@ -1,3 +1,1 @@
-%h1= t('.title')
-%div
-  = @issue.id
+= render 'issues/issue', mailing_list: @issue.mailing_list, issue: @issue
