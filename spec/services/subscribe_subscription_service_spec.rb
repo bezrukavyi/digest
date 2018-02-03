@@ -4,7 +4,7 @@ describe SubscribeSubscriptionService, type: :model do
   describe '.call' do
     context 'valid' do
       it 'enable' do
-        expect(SubscribeMailJob).to receive(:perform_async).with(subscription.id, :disable)
+        expect(SubscribeMailJob).not_to receive(:perform_async).with(subscription.id, :disable)
         subject = described_class.new(subscription, subscribe: :enable)
         expect { subject.call }.to change { subscription.reload.aasm_state }.from('pending').to('active')
       end

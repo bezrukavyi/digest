@@ -6,7 +6,7 @@
         .col.left= prev_issue(@issue)
         .col.right= next_issue(@issue)
     .col-12
-      .row
+      .row.issue-container
         .col-lg-3.issues-card-mono.scroll-to-bottom
           = render 'issues/issues_list', issues: @issues, current_issue: @issue
         .col-lg-9.center.scroll-to-bottom

@@ -1,6 +1,7 @@
 class MailingListsController < ApplicationController
+  load_resource :mailing_list, only: %i[show]
+
   def show
-    @mailing_list = MailingList.friendly.find(params[:id])
     @issue = @mailing_list.last_issue
     @subscription = Subscription.new
     inject_flash_error(@subscription)

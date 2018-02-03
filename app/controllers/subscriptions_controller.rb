@@ -6,14 +6,14 @@ class SubscriptionsController < ApplicationController
 
   def create
     CreateSubscriptionCommand.call(@mailing_list, permit_create_params) do
-      on(:success) { |subscription| success_subsribe(subscription) }
+      on(:success) { |subscription| success_subsribe(subscription, :enable) }
       on(:failure) { |subscription| failure_subsribe(subscription) }
     end
   end
 
   def update
     UpdateSubscriptionCommand.call(params) do
-      on(:success_subsribe) { |subscription| success_subsribe(subscription) }
+      on(:success_subsribe) { |subscription| success_subsribe(subscription, params[:subscribe]) }
       on(:failure_subsribe) { |subscription| failure_subsribe(subscription) }
     end
   end
@@ -25,10 +25,14 @@ class SubscriptionsController < ApplicationController
   end
 
   def failure_subsribe(subscription)
-    redirect_back fallback_location: subscription, flash: { subscription_errors: subscription.errors }
+    if subscription
+      redirect_to subscription.mailing_list, flash: { subscription_errors: subscription.errors }
+    else
+      redirect_to '/', flash: { errors: t('mailing_lists.subscription_mail.invalid_token') }
+    end
   end
 
-  def success_subsribe(subscription)
-    redirect_back fallback_location: subscription, flash: { success: t('subscription.success_subsribe') }
+  def success_subsribe(subscription, type)
+    redirect_to subscription.mailing_list, flash: { success: t("mailing_lists.subscription_mail.success_#{type}") }
   end
 end
