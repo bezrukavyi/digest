@@ -1,7 +1,7 @@
 = render 'partials/alerts'
 .row.mt-35
   .col-md-auto.mb-35.mr-auto.mailing-list-title
-    = link_to mailing_list.name, mailing_list
+    = link_to mailing_list.name.humanize, mailing_list
   .col-md-auto.mb-35
     .row.align-items-center
       .col= active_link_to t('header.archives'), mailing_list_issues_path(mailing_list), class: 'header-link', active: 'active'

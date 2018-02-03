@@ -5,7 +5,8 @@
   .row.full-height
     .col-lg-6.subscribe__mailing-list
       .container
-        %h1.mt-65.center.mb-35.title= @mailing_list.name.humanize
+        %h1.mt-65.center.mb-35.title
+          = link_to @mailing_list.name.humanize, @mailing_list
         %h2.mb-35.center.subtitle= @mailing_list.description.titleize
         .mb-25
           = render 'subscribe_form', mailing_list: @mailing_list, subscription: @subscription, autofocus: true
