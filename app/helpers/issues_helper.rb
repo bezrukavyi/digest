@@ -14,7 +14,7 @@ module IssuesHelper
   end
 
   def issue_path(issue)
-    mailing_list_issue_path(issue.mailing_list, issue.slug)
+    mailing_list_issue_path(issue.mailing_list, issue)
   end
 
   def issues_active_class(issue, current_issue)

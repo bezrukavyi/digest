@@ -5,7 +5,7 @@
       %table{cellpadding: '0', cellspacing: '0', style: 'padding: 0 5px 10px;', width: '598'}
         %tr
           %td{align: 'center', colspan: '3', style: "padding: 50px 0; background: -webkit-gradient(linear, left top, left bottom, from(#2898fb), to(#0171fd)) !important; background: linear-gradient(#2898fb, #0171fd) !important;"}
-            = link_to @mailing_list.name, mailing_list_url(@mailing_list, locale: :en), target: '_blank', style: "text-decoration: none; color: #fff; text-transform: none; font-size: 24px; line-height: 24px;"
+            = link_to @mailing_list.name, mailing_list_url(@mailing_list), target: '_blank', style: "text-decoration: none; color: #fff; text-transform: none; font-size: 24px; line-height: 24px;"
         %tr
           %td{colspan: '3', style: 'text-align: center; padding: 30px 0; font-size: 17px; line-height: 24px;'}
             = t('mailing_lists.subscription_mail.hello')
@@ -15,7 +15,7 @@
               %b{style: 'font-size: 14px; line-height: 40px; color: #0171fd;'}= t('mailing_lists.subscription_mail.confirm_subscription')
         %tr
           %td{align: 'center', colspan: '2', style: 'border-bottom: 1px solid #d7d7d7; padding: 0 0 10px 0;'}
-            = link_to t('header.archives'), mailing_list_issues_url(@mailing_list, locale: :en), target: '_blank', style: "text-decoration: none; color: #0171fd; text-transform: none; font-size: 12px;"
+            = link_to t('header.archives'), mailing_list_issues_url(@mailing_list), target: '_blank', style: "text-decoration: none; color: #0171fd; text-transform: none; font-size: 12px;"
         %tr
           %td{align: 'center', colspan: '2', style: 'padding: 25px 8px 10px; font-size: 14px; color: #fff;'}
             %a{href: "#{ENV['CLIENT_URL']}", style: 'text-decoration: none; color: #000', target: '_blank'}= "© DigestList #{Date.today.year}"
