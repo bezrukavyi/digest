@@ -13,11 +13,4 @@ Rails.application.routes.draw do
   resources :links, only: :show
 
   get :subscribe, to: 'subscriptions#update', path: 'subscriptions/subscribe'
-
-  namespace :dashboard do
-    resources :mailing_lists, only: %i[new create show update] do
-      resources :issues, only: %i[index show create update]
-      resources :subscriptions, only: %i[show update]
-    end
-  end
 end
