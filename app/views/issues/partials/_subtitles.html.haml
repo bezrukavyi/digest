@@ -8,6 +8,6 @@
             %tr
               %td.issue-subtitle
                 .issue-subtitle__title
-                  = link_to item.title.titleize, link_path(item.link), class: 'issue-subtitle__link', target: "_blank"
+                  = link_to item.title.titleize, link_url(item.link), class: 'issue-subtitle__link', target: "_blank"
                 .issue-subtitle__description= item.description
                 .issue-subtitle__source= item.source
