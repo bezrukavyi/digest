@@ -1,8 +1,10 @@
 class IssueMailer < ApplicationMailer
   helper :application, :issues
+  helper SubscriptionMailerHelper
 
-  def issue_release(issue, email)
+  def issue_release(issue, subscription)
     @issue = issue
-    mail(to: email, subject: "##{@issue.release_number}: #{@issue.name}", from: from(@issue.mailing_list))
+    @subscription = subscription
+    mail(to: @subscription.email, subject: "##{@issue.release_number}: #{@issue.name}", from: from(@issue.mailing_list))
   end
 end

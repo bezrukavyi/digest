@@ -10,3 +10,4 @@ en:
       invalid_token: "Invalid subscription link"
       success_enable: "You have successfully subscribed"
       success_disable: "You have successfully unsubscribed"
+      stop_getting: "Unsubscribe from %{name}"
