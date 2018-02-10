@@ -12,3 +12,5 @@
                   = render 'issues/partials/description.html.haml', issue: issue
                   = render 'issues/partials/top_items.html.haml', issue: issue
                   = render 'issues/partials/subtitles.html.haml', subtitles: issue.subtitles
+                  - if local_assigns[:subscription]
+                    = render 'issues/partials/footer.html.haml', subscription: local_assigns[:subscription]
