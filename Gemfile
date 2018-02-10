@@ -28,6 +28,7 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'kaminari', '~> 0.17.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'meta-tags', '~> 2.7'
+gem 'trailblazer-rails', '~> 2.1'
 
 group :development, :test do
   gem 'ffaker', '~> 2.7'
