@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: digestify_production
-  username: digestify
+  username: <%= ENV['DIGESTIFY_DATABASE_USERNAME'] %>
   password: <%= ENV['DIGESTIFY_DATABASE_PASSWORD'] %>

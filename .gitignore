@@ -24,3 +24,6 @@ vendor/bundle
 .env.production
 .env.staging
 .env.dev
+
+/chef/cookbooks/*
+.ruby-version
