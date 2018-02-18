@@ -38,3 +38,13 @@ en:
   create: 'Create'
   subscription:
     success_subsribe: "You have successfully subscribed"
+  titles:
+    change: Change
+    save: Save
+    save_and_continue: Save and Continue
+    forgot_password?: Forgot password?
+    new_password: Set new password
+    log_in: 'Log in'
+    sign_up: 'Sign up'
+    sign_in: 'Sign in'
+    required_fields: all fields are required

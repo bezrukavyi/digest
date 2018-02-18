@@ -33,6 +33,10 @@ gem 'trailblazer-rails', '~> 2.1'
 gem 'cells-rails', '~> 0.0.8'
 gem 'cells-haml', '~> 0.0.10'
 gem 'dry-matcher', '~> 0.7.0'
+gem 'devise', '~> 4.4', '>= 4.4.1'
+gem 'omniauth', '~> 1.8', '>= 1.8.1'
+gem 'omniauth-facebook', '~> 4.0'
+gem 'omniauth-google-oauth2', '~> 0.5.3'
 
 group :development, :test do
   gem 'ffaker', '~> 2.7'

@@ -1,5 +1,5 @@
 module Dashboard
-  class MailingListsController < ApplicationController
+  class MailingListsController < Dashboard::ApplicationController
     def show
       result = MailingLists::Find.call(options)
       @model = result[:model]

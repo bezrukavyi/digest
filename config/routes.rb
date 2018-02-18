@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
 
+  get 'dashboard', to: 'dashboard/mailing_lists#show', as: :dashboard_root
+
+  devise_for :users, path: :dashboard
+
   namespace :dashboard do
     resources :mailing_lists
   end
