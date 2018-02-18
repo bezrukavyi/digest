@@ -28,6 +28,11 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'kaminari', '~> 0.17.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'meta-tags', '~> 2.7'
+gem "trailblazer", '~> 2.1.0.beta3'
+gem "trailblazer-rails", '~> 2.1'
+gem "cells-rails"
+gem "cells-haml"
+gem "dry-matcher"
 
 group :development, :test do
   gem 'ffaker', '~> 2.7'
@@ -49,6 +54,8 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'wisper-rspec', '~> 1.0'
   gem 'database_cleaner', '~> 1.6', '>= 1.6.1'
+  gem "rspec-cells"
+  gem "rspec-html-matchers"
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

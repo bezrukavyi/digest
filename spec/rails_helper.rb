@@ -12,6 +12,8 @@ require 'shoulda/matchers'
 require 'cancan/matchers'
 require 'aasm/rspec'
 require 'sucker_punch/testing/inline'
+require 'rspec-cells'
+require 'rspec-html-matchers'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
 
@@ -20,6 +22,7 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Rectify::RSpec::Helpers, type: :command
+  config.include RSpecHtmlMatchers, type: :cell
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

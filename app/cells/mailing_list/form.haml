@@ -1,0 +1,5 @@
+= simple_form_for options[:form], as: :mailing_list, url: form_url, html: { class: 'inline' } do |field|
+    = field.input :slug
+    = field.input :name
+    = field.input :description
+    = field.button :submit, t('create'), class: 'btn btn-blue-gradient'

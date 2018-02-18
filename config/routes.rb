@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
 
+  namespace :dashboard do
+    resources :mailing_lists
+  end
+
   get ':id', to: 'mailing_lists#show'
 
   resources :mailing_lists, path: '', only: :show do

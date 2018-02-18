@@ -35,5 +35,6 @@ en:
     latest: 'Latest'
     rss: 'RSS'
   subscribe: 'Subscribe'
+  create: 'Create'
   subscription:
     success_subsribe: "You have successfully subscribed"

@@ -3,14 +3,14 @@ class Issue < ApplicationRecord
   friendly_id :name, use: %i[slugged]
 
   belongs_to :mailing_list
-  has_many :subtitles
-  has_many :issue_items
+  has_many :subtitles, dependent: :destroy
+  has_many :issue_items, dependent: :destroy
 
-  scope :awaiting, -> { where(published: false).where("release_at <= ?", Time.zone.now) }
+  scope :awaiting, -> { where(published: false).where('release_at <= ?', Time.zone.now) }
   scope :released, -> { where(published: true) }
   scope :newest, -> { order(created_at: :desc) }
 
-  validates :name, presence: true
+  # validates :name, presence: true
 
   before_create :increment_release
 
@@ -29,6 +29,6 @@ class Issue < ApplicationRecord
   end
 
   def increment_release
-    self.release_number = Issue.where(mailing_list_id: self.mailing_list_id).last&.release_number.to_i + 1
+    self.release_number = Issue.where(mailing_list_id: mailing_list_id).last&.release_number.to_i + 1
   end
 end
