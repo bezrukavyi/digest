@@ -25,5 +25,5 @@ vendor/bundle
 .env.staging
 .env.dev
 
-/chef/cookbooks/*
+chef/cookbooks/
 .ruby-version
