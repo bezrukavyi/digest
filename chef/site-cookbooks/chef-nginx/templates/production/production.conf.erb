@@ -4,8 +4,8 @@ upstream puma {
 
 server {
   listen 80;
-  server_name digestlist.co www.digestlist.co;
-  return $scheme://digestlist.co$request_uri;
+  server_name _;
+  return https://$host$request_uri;
 }
 
 server {
@@ -15,6 +15,10 @@ server {
 
   server_name digestlist.co;
   root /home/deployer/www/digestify/current/public;
+
+  if ($host ~* ^www\.){
+    rewrite ^(.*)$ http://digestlist.co$1 permanent;
+  }
 
   access_log off;
   error_log /var/log/nginx/error.log crit;
