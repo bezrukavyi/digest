@@ -47,6 +47,11 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'bullet', '~> 5.7', '>= 5.7.2'
+
+  gem 'capistrano', '~> 3.10', require: false
+  gem 'capistrano-bundler', '~> 1.3', require: false
+  gem 'capistrano-rails', '~> 1.3', require: false
+  gem 'rvm1-capistrano3', '1.4.0', require: false
 end
 
 group :test do
