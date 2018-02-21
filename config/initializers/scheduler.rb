@@ -1,7 +1,7 @@
-require 'rufus-scheduler'
+# require 'rufus-scheduler'
 
-s = Rufus::Scheduler.singleton
+# s = Rufus::Scheduler.singleton
 
-s.every '1m' do
-  ReleaseJob.perform_async
-end
+# s.every '1m' do
+#   ReleaseJob.perform_async
+# end

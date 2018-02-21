@@ -1,7 +1,7 @@
 class CreateAuthProviders < ActiveRecord::Migration[5.1]
   def change
     create_table :auth_providers do |t|
-      t.string :name
+      t.integer :name
       t.string :uid
       t.references :resource, polymorphic: true
 

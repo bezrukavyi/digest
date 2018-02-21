@@ -4,21 +4,21 @@ module ResultMatcher
   private
 
   def result_match
-    dry_cases = CASES.each_with_object({}) do |one_case, case_list| 
-      case_list[one_case] = send(one_case)
+    dry_cases = CASES.each_with_object({}) do |one_case, case_list|
+      case_list[one_case] = send("#{one_case}_case")
     end
 
     Dry::Matcher.new(dry_cases)
   end
 
-  def success
+  def success_case
     Dry::Matcher::Case.new(
       match:   ->(result) { result.success? && !result['result.contract.default']&.failure? },
       resolve: ->(result) { result }
     )
   end
 
-  def failure
+  def failure_case
     Dry::Matcher::Case.new(
       match:   ->(result, *patterns) { patterns.any? ? case_patterns(result, patterns) : result.failure? },
       resolve: ->(result) { result }

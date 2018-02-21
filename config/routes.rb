@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'dashboard/mailing_lists#show', as: :dashboard_root
 
-  devise_for :users, path: :dashboard
+  devise_for :users, path: :dashboard, controllers: {
+    omniauth_callbacks: 'dashboard/users/omniauth_callbacks'
+  }
 
   namespace :dashboard do
     resources :mailing_lists

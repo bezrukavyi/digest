@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20180218192815) do
   enable_extension "plpgsql"
 
   create_table "auth_providers", force: :cascade do |t|
-    t.string "name"
+    t.integer "name"
     t.string "uid"
     t.string "resource_type"
     t.bigint "resource_id"

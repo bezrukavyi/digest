@@ -445,6 +445,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.4)
   rectify (~> 0.10.0)
+  reform
   rspec-cells (~> 0.3.4)
   rspec-html-matchers (~> 0.9.1)
   rspec-rails (~> 3.7)

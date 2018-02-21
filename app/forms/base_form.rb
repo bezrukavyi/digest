@@ -1,5 +1,3 @@
-require 'reform/form/validation/unique_validator'
-
 class BaseForm < Reform::Form
-  include Reform::Form::ActiveModel::ModelReflections
+  include Reform::Form::ActiveModel
 end
