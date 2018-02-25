@@ -5,7 +5,7 @@ upstream puma {
 server {
   listen 80;
   server_name _;
-  return https://$host$request_uri;
+  return http://$host$request_uri;
 }
 
 server {
