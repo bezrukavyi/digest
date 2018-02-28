@@ -3,6 +3,7 @@ module MailingLists
     FINDER = ->(*) { MailingLists::Find }
 
     step Nested(FINDER)
+    step Policy::Pundit(BasePolicy, :edit?)
     step Contract::Build(constant: CreateContract)
   end
 end

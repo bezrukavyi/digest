@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180218192815) do
+ActiveRecord::Schema.define(version: 20180225184629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,7 +76,9 @@ ActiveRecord::Schema.define(version: 20180218192815) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.bigint "user_id"
     t.index ["slug"], name: "index_mailing_lists_on_slug", unique: true
+    t.index ["user_id"], name: "index_mailing_lists_on_user_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -123,6 +125,7 @@ ActiveRecord::Schema.define(version: 20180218192815) do
   add_foreign_key "issue_items", "issues"
   add_foreign_key "issues", "mailing_lists"
   add_foreign_key "links", "issue_items"
+  add_foreign_key "mailing_lists", "users"
   add_foreign_key "subscriptions", "mailing_lists"
   add_foreign_key "subtitles", "issues"
 end

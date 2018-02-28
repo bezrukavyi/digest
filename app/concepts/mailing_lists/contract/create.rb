@@ -5,9 +5,10 @@ module MailingLists
     property :name
     property :slug
     property :description
+    property :user
 
     validates :name, :slug, format: { without: Regexp.new(EXCLUDE_WORDS.join('|')) }
-    validates :name, :description, :slug, presence: true
+    validates :name, :description, :slug, :user, presence: true
     validates :slug, unique: true
   end
 end

@@ -41,6 +41,6 @@ module ResultMatcher
 
   def not_found_pattern(result)
     model = result[:model]
-    result.failure? && !model&.success?
+    result.failure? && model.nil?
   end
 end

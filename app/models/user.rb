@@ -4,4 +4,5 @@ class User < ApplicationRecord
          :validatable, :omniauthable, :confirmable
 
   has_many :auth_providers, as: :resource, dependent: :destroy
+  has_many :mailing_lists, dependent: :destroy
 end

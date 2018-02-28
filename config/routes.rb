@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
 
+  get '422', to: 'stat#unauthorized', as: :unauthorized
+  get '404', to: 'stat#not_found', as: :not_found
   get 'dashboard', to: 'dashboard/mailing_lists#show', as: :dashboard_root
 
   devise_for :users, path: :dashboard, controllers: {
