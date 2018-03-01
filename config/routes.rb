@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   }
 
   namespace :dashboard do
-    resources :mailing_lists
+    resources :mailing_lists do
+      resources :subscriptions, only: %i[index]
+    end
+    resources :subscriptions, only: %i[index]
   end
 
   get ':id', to: 'mailing_lists#show'

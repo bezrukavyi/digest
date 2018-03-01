@@ -9,7 +9,11 @@ module ResultHandler
     result_match.call(@result) do |on|
       on.failure(:unauthorized) { redirect_to unauthorized_path }
       on.failure(:not_found) { redirect_to not_found_path }
-      yield(on)
+      if block_given?
+        yield(on)
+      else
+        on.success { render action_name }
+      end
     end
   end
 
@@ -19,6 +23,10 @@ module ResultHandler
 
   def define_model
     @model = @result[:model]
+  end
+
+  def define_collection
+    @collection = @result[:model]
   end
 
   def show_variables
@@ -47,5 +55,9 @@ module ResultHandler
   def create_variables
     define_model
     define_form
+  end
+
+  def index_variables
+    define_collection
   end
 end
