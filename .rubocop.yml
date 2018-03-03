@@ -40,3 +40,9 @@ Metrics/BlockLength:
 
 Style/CaseEquality:
   Enabled: false
+
+Style/SignalException:
+  Enabled: false
+
+Lint/UnreachableCode:
+  Enabled: false

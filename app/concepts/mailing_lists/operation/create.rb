@@ -3,6 +3,7 @@ module MailingLists
     PRESENT = ->(*) { MailingLists::New }
 
     step Nested(PRESENT)
+    step Policy::Pundit(BasePolicy, :create?)
     step Contract::Validate()
     step Contract::Persist()
   end

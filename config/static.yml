@@ -1,0 +1,5 @@
+--- 
+:mailing_list:
+  :exclude_words:
+    - '\Adashboard\Z'
+    - '\Aadmin\Z'

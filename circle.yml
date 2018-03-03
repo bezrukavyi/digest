@@ -1,6 +1,9 @@
 machine:
   ruby:
     version: 2.4.3
+  environment:
+    DOMAIN: "http://localhost:3000"
+    MAILGUN_USERNAME: "example@gmail.com"
 database:
   override:
     - bin/rails db:create db:migrate
