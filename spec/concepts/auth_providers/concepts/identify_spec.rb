@@ -1,7 +1,7 @@
 describe AuthProviders::Identify, type: :operation do
   describe '.call' do
     context 'when user exist' do
-      let!(:user) { build :user, :by_operation}
+      let!(:user) { build :user, :by_operation }
       let!(:params) do
         {
           info: { email: user.email }

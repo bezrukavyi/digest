@@ -1,4 +1,4 @@
-%w(nginx.conf puma.conf).each do |conf_file|
+%w[nginx.conf puma.conf].each do |conf_file|
   cookbook_file "/etc/monit/conf.d/#{conf_file}" do
     user 'root'
     group 'root'

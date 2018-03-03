@@ -1,7 +1,7 @@
 class SubscribeSubscriptionService < Operators::Service
   attr_reader :subscription, :params, :subscribe_type
 
-  SUBSCTIBE_TYPES = %i[enable disable]
+  SUBSCTIBE_TYPES = %i[enable disable].freeze
 
   def initialize(subscription, params)
     @subscription = subscription

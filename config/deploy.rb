@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.10.1"
+lock '~> 3.10.1'
 
 set :application, 'digestify'
 set :repo_url, 'git@github.com:kirillshevch/digestify.git'

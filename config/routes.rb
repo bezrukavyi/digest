@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  if Rails.env.development?
+  if Rails.env.development? # rubocop:disable Style/IfUnlessModifier
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
 

@@ -4,7 +4,7 @@ atom_feed do |feed|
 
   @issues.each do |issue|
     feed.entry(issue, url: mailing_list_issue_url(@mailing_list, issue)) do |entry|
-      entry.title @mailing_list.name + ": " + issue.release_number.to_s
+      entry.title @mailing_list.name + ': ' + issue.release_number.to_s
       entry.content render('issues/issue.html.haml', mailing_list: @mailing_list, issue: issue), type: 'html'
       entry.url mailing_list_issue_url(@mailing_list, issue)
       entry.summary issue.name
