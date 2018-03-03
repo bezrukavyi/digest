@@ -30,13 +30,19 @@ module ResultMatcher
   end
 
   def invalid_pattern(result)
-    contract = result['result.contract.default']
-    result.failure? && contract && contract.failure?
+    contracts = result.inspect.scan(/result.contract.\w+/)
+    contracts.any? do |name|
+      contract = result[name]
+      result.failure? && contract && contract.failure?
+    end
   end
 
   def unauthorized_pattern(result)
-    policy = result['result.policy.default']
-    result.failure? && policy && policy.failure?
+    policies = result.inspect.scan(/result.policy.\w+/)
+    policies.any? do |name|
+      policy = result[name]
+      result.failure? && policy && policy.failure?
+    end
   end
 
   def not_found_pattern(result)
