@@ -32,7 +32,7 @@ module AuthProviders
     private
 
     def random_password
-      password = SecureRandom.hex(16)
+      password = SecureRandom.urlsafe_base64(nil, false)
       { password: password, password_confirmation: password }
     end
   end
