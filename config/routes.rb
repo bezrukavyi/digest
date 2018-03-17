@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       namespace :dashboard do
         resources :mailing_lists do
           resources :subscriptions, only: %i[index]
+          resources :issues, only: %i[index]
         end
         resources :subscriptions, only: %i[index]
       end
