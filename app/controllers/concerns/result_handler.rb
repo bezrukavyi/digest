@@ -7,13 +7,11 @@ module ResultHandler
     send("#{action_name}_variables")
 
     result_match.call(@result) do |on|
-      on.failure(:unauthorized) { redirect_to unauthorized_path }
-      on.failure(:not_found) { redirect_to not_found_path }
-      if block_given?
-        yield(on)
-      else
-        on.success { render action_name }
-      end
+      on.failure(:unauthorized) { head :unauthorized }
+      on.failure(:not_found) { head :not_found }
+      yield(on) if block_given?
+      on.failure { respond_to_error }
+      on.success { respond_to_model }
     end
   end
 
@@ -23,10 +21,6 @@ module ResultHandler
 
   def define_model
     @model = @result[:model]
-  end
-
-  def define_collection
-    @collection = @result[:model]
   end
 
   def show_variables
@@ -58,6 +52,14 @@ module ResultHandler
   end
 
   def index_variables
-    define_collection
+    define_model
+  end
+
+  def respond_to_error
+    render json: @model, status: 422, serializer: ActiveModel::Serializer::ErrorSerializer.new(@model, @form)
+  end
+
+  def respond_to_model
+    respond_with @model
   end
 end

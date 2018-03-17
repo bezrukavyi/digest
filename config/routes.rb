@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount_devise_token_auth_for 'User', at: 'auth'
   if Rails.env.development? # rubocop:disable Style/IfUnlessModifier
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
@@ -7,16 +8,24 @@ Rails.application.routes.draw do
   get '404', to: 'stat#not_found', as: :not_found
   get 'dashboard', to: 'dashboard/mailing_lists#show', as: :dashboard_root
 
-  devise_for :users, path: :dashboard, controllers: {
-    omniauth_callbacks: 'dashboard/users/omniauth_callbacks'
-  }
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      mount_devise_token_auth_for 'User', at: :auth, controllers: {
+        token_validations:  'api/v1/overrides/token_validations',
+        registrations:      'api/v1/overrides/registrations',
+        sessions:           'api/v1/overrides/sessions',
+        omniauth_callbacks: 'api/v1/overrides/omniauth_callbacks',
+        passwords:          'api/v1/overrides/passwords'
+      }
 
-  namespace :dashboard do
-    resources :mailing_lists do
-      resources :subscriptions, only: %i[index]
-      resources :issues, only: %i[index]
+      namespace :dashboard do
+        resources :mailing_lists do
+          resources :subscriptions, only: %i[index]
+          resources :issues, only: %i[index]
+        end
+        resources :subscriptions, only: %i[index]
+      end
     end
-    resources :subscriptions, only: %i[index]
   end
 
   get ':id', to: 'mailing_lists#show'
