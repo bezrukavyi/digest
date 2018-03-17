@@ -39,6 +39,7 @@ gem 'omniauth', '~> 1.8', '>= 1.8.1'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'omniauth-google-oauth2', '~> 0.5.3'
 gem 'pundit', '~> 1.1'
+gem 'representable', '~> 3.0', '>= 3.0.4'
 
 group :development, :test do
   gem 'ffaker', '~> 2.7'
