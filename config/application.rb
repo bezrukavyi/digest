@@ -30,5 +30,9 @@ module Digestify
     config.eager_load_paths += Dir[Rails.root.join('app', 'queries', '**', '*.rb')].each { |f| require f }
 
     config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
+
+    config.after_initialize do
+      Rails.application.routes.default_url_options[:host] = ENV['DOMAIN']
+    end
   end
 end

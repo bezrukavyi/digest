@@ -2,14 +2,6 @@ module Api
   module V1
     module Overrides
       class SessionsController < DeviseTokenAuth::SessionsController
-        def create
-          super
-        end
-
-        def destroy
-          super
-        end
-
         protected
 
         def render_create_success

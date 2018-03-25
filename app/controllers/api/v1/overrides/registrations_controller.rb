@@ -2,10 +2,6 @@ module Api
   module V1
     module Overrides
       class RegistrationsController < DeviseTokenAuth::RegistrationsController
-        def create
-          super
-        end
-
         protected
 
         def render_create_success

@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'User', at: 'auth'
-  if Rails.env.development? # rubocop:disable Style/IfUnlessModifier
-    mount LetterOpenerWeb::Engine, at: '/letter_opener'
-  end
-
-  get '422', to: 'stat#unauthorized', as: :unauthorized
-  get '404', to: 'stat#not_found', as: :not_found
-  get 'dashboard', to: 'dashboard/mailing_lists#show', as: :dashboard_root
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
