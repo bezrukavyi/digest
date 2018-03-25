@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+  if Rails.env.development? # rubocop:disable Style/IfUnlessModifier
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
