@@ -1,65 +1,31 @@
 module ResultHandler
   private
 
-  def respond_to_result
+  def result_matcher(result)
+    ResultMatcher.call(result) { |on| yield(on) }
+  end
+
+  def respond_to_result(options = {})
     raise ArgumentError unless @result
 
-    send("#{action_name}_variables")
-
-    result_match.call(@result) do |on|
+    ResultMatcher.call(@result) do |on|
       on.failure(:unauthorized) { head :unauthorized }
       on.failure(:not_found) { head :not_found }
       yield(on) if block_given?
-      on.failure { respond_to_error }
-      on.success { respond_to_model }
+      on.failure { respond_to_failure(options) }
+      on.success { respond_to_success(options) }
     end
   end
 
-  def define_form
-    @form = @result['contract.default']
+  def respond_to_failure(options)
+    contract = options[:contract] || 'contract.default'
+    render json: { errors: @result[contract].errors }, status: 422
   end
 
-  def define_model
-    @model = @result[:model]
-  end
-
-  def show_variables
-    define_model
-  end
-
-  def destroy_variables
-    define_model
-  end
-
-  def edit_variables
-    define_model
-    define_form
-  end
-
-  def new_variables
-    define_model
-    define_form
-  end
-
-  def update_variables
-    define_model
-    define_form
-  end
-
-  def create_variables
-    define_model
-    define_form
-  end
-
-  def index_variables
-    define_model
-  end
-
-  def respond_to_error
-    render json: @model, status: 422, serializer: ActiveModel::Serializer::ErrorSerializer.new(@model, @form)
-  end
-
-  def respond_to_model
-    respond_with @model
+  def respond_to_success(options)
+    entity = @result[:model]
+    serializer = options.delete(:serializer)
+    presenter = serializer ? serializer.new(entity, options).serialized_json : entity
+    respond_with presenter
   end
 end

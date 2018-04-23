@@ -15,6 +15,10 @@ module MailingLists
       same_user?
     end
 
+    def edit?
+      same_user?
+    end
+
     def create?
       user.present?
     end

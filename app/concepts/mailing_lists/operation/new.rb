@@ -1,12 +1,14 @@
 module MailingLists
-  class New < Trailblazer::Operation
+  class New < BaseOperation
+    attr_env :current_user
+
     step Model(MailingList, :new)
     step :assign_current_user
-    step Contract::Build(constant: CreateContract)
+    step Contract::Build(constant: Contracts::Create)
 
-    def assign_current_user(env, params:, **)
-      params[:user] = env[:current_user]
-      true
+    def assign_current_user(*)
+      params[:user] = current_user
+      success
     end
   end
 end

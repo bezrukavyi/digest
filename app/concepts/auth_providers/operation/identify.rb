@@ -1,39 +1,36 @@
 module AuthProviders
-  class Identify < Trailblazer::Operation
+  class Identify < BaseOperation
+    attr_env :current_user
+
     CREATE = ->(*) { AuthProviders::Create }
 
     step :find_provider, pass_fast: true
-    fail :find_user, Output(:success) => :success
-    fail :create_user, Output(:success) => :success, fail_fast: true
+    fail :find_or_create_user, Output(:success) => :success
     step :confirm_user
     step Nested(CREATE)
 
-    def find_provider(env, params:, **)
-      env[:model] = AuthProvider.find_by(name: params[:provider], uid: params[:uid])
-      env[:model].present?
+    def find_provider(*)
+      self.model = AuthProvider.find_by(name: params[:provider], uid: params[:uid])
+      model.present?
     end
 
-    def find_user(env, params:, **)
-      env[:current_user] = User.find_by(email: params.dig(:info, :email))
-      env[:current_user].present?
+    def find_or_create_user(*)
+      self.current_user = User.find_by(email: params.dig(:info, :email))
+      return success if current_user.present?
+      self.current_user = Users::Create.call(params: user_create_params)[:model]
+      current_user.persisted?
     end
 
-    def create_user(env, params:, **)
-      user_params = params[:info].merge(random_password)
-      env[:current_user] = Users::Create.call(params: user_params)[:model]
-      env[:current_user].persisted?
-    end
-
-    def confirm_user(env, params:, **)
-      return true if env[:current_user].confirmed?
-      env[:current_user].confirm
+    def confirm_user(*)
+      return true if current_user.confirmed?
+      current_user.confirm
     end
 
     private
 
-    def random_password
+    def user_create_params
       password = SecureRandom.urlsafe_base64(nil, false)
-      { password: password, password_confirmation: password }
+      params[:info].merge(password: password, password_confirmation: password)
     end
   end
 end

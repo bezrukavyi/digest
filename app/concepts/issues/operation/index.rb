@@ -1,19 +1,18 @@
 module Issues
-  class Index < Trailblazer::Operation
-    extend Representer::DSL
+  class Index < BaseOperation
+    attr_env :mailing_list
 
-    step Policy::Guard(:find_mailing_list)
+    step :find_mailing_list
     step :load_issues
-    representer :render, IssuesRepresenter
 
-    def load_issues(env, **)
-      env[:model] = env[:mailing_list].issues
+    def find_mailing_list(*)
+      result = MailingLists::Find.call(params: { id: params[:mailing_list_id] })
+      self.mailing_list = result[:model]
+      result.success?
     end
 
-
-    def find_mailing_list(env, **)
-      env[:mailing_list] = MailingList.find_by(slug: env[:mailing_list_id])
-      env[:mailing_list].user == env[:current_user]
+    def load_issues(*)
+      self.model = IssuesQuery.call(mailing_list.issues, params)
     end
   end
 end

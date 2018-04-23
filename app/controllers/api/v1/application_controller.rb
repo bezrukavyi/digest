@@ -2,9 +2,8 @@ module Api
   module V1
     class ApplicationController < ActionController::Base
       include DeviseTokenAuth::Concerns::SetUserByToken
-      include Flashable
-      include ResultMatcher
       include ResultHandler
+      include Redirect
 
       self.responder = Responders::ApplicationResponder
 

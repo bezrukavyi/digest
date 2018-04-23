@@ -50,7 +50,7 @@ describe AuthProviders::Identify, type: :operation do
         expect(result).to be_success
       end
 
-      it 'mustnt create user' do
+      it 'must not create user' do
         params[:info][:email] = nil
         result = described_class.call(params: params)
 
@@ -58,7 +58,7 @@ describe AuthProviders::Identify, type: :operation do
         expect(result).to be_failure
       end
 
-      it 'mustnt create provider' do
+      it 'must not create provider' do
         params[:uid] = nil
         result = described_class.call(params: params)
         user = User.find_by(email: params[:info][:email])

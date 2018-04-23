@@ -4,6 +4,6 @@
       %tr
         %td.issue-top-items
           .issue-top-items__title
-            = link_to item.title.titleize, link_url(id: item.link.id), class: 'issue-top-items__link', target: "_blank"
+            = link_to item.title.titleize, api_v1_link_url(id: item.link.id), class: 'issue-top-items__link', target: "_blank"
           .issue-top-items__description= item.description
           .issue-top-items__source= item.source

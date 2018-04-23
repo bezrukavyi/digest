@@ -5,6 +5,6 @@ module AuthProviders
     property :resource
 
     validates :name, :uid, :resource, presence: true
-    validates :uid, unique: { scope: :name }
+    validates_uniqueness_of :uid, scope: :name
   end
 end

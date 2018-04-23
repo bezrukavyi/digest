@@ -1,12 +1,10 @@
 module MailingLists
-  class Find < Trailblazer::Operation
-    step Rescue(ActiveRecord::RecordNotFound) {
-      step :model!
-    }
-    step Policy::Pundit(BasePolicy, :show?)
+  class Find < BaseOperation
+    step Rescue(ActiveRecord::RecordNotFound) { step :model! }
 
-    def model!(env, params:, **)
-      env[:model] = MailingList.friendly.find(env[:id] || params[:id])
+    def model!(*)
+      id = env[:id] || params[:id] || params[:mailing_list_id]
+      self.model = MailingList.friendly.find(id)
     end
   end
 end

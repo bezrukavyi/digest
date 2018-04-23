@@ -13,24 +13,21 @@ Rails.application.routes.draw do
         passwords:          'api/v1/overrides/passwords'
       }
 
-      namespace :dashboard do
-        resources :mailing_lists do
-          resources :subscriptions, only: %i[index]
-          resources :issues, only: %i[index]
-        end
-        resources :subscriptions, only: %i[index]
+      resources :mailing_lists, path: '', only: %i[show] do
+        resources :issues, only: %i[index show]
       end
+
+      resources :subscriptions, only: %i[create]
+
+      resources :links, only: %i[show]
+
+      namespace :dashboard do
+        resources :mailing_lists, except: %i[edit new] do
+          resources :subscriptions, only: %i[index]
+        end
+      end
+
+      get :subscribe, to: 'subscriptions#update', path: 'subscriptions/subscribe'
     end
   end
-
-  get ':id', to: 'mailing_lists#show'
-
-  resources :mailing_lists, path: '', only: :show do
-    resources :issues, only: %i[index show]
-    resources :subscriptions, only: %i[create]
-  end
-
-  resources :links, only: :show
-
-  get :subscribe, to: 'subscriptions#update', path: 'subscriptions/subscribe'
 end

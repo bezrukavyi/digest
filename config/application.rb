@@ -25,11 +25,9 @@ module Digestify
       g.factory_bot dir: 'spec/factories'
     end
 
-    config.eager_load_paths += Dir[Rails.root.join('app', 'validators', '**', '*.rb')].each { |f| require f }
-    config.eager_load_paths += Dir[Rails.root.join('app', 'forms', '**', '*.rb')].each { |f| require f }
-    config.eager_load_paths += Dir[Rails.root.join('app', 'queries', '**', '*.rb')].each { |f| require f }
+    config.autoload_paths += Dir[Rails.root.join('app', 'validators', '**', '*.rb')].each { |f| require f }
 
-    config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
+    config.action_mailer.preview_path = Rails.root.join('spec', 'mailers', 'previews')
 
     config.after_initialize do
       Rails.application.routes.default_url_options[:host] = ENV['DOMAIN']

@@ -10,5 +10,9 @@ FactoryBot.define do
         create :link, issue_item: issue_item
       end
     end
+
+    trait :invalid do
+      description nil
+    end
   end
 end

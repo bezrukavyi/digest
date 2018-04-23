@@ -9,4 +9,8 @@ class MailingList < ApplicationRecord
   def last_issue
     @last_issue ||= issues.released.last
   end
+
+  def last_issue_id
+    last_issue.id
+  end
 end

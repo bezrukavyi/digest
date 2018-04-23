@@ -1,5 +1,5 @@
 module MailingLists
-  class Create < Trailblazer::Operation
+  class Create < BaseOperation
     PRESENT = ->(*) { MailingLists::New }
 
     step Nested(PRESENT)

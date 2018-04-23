@@ -1,5 +1,5 @@
 module Api::V1::Dashboard
-  class SubscriptionsController < Api::V1::ApplicationController
+  class SubscriptionsController < Api::V1::Dashboard::ApplicationController
     def index
       @result = Subscriptions::Index.call(params: params, current_user: current_user)
       respond_to_result

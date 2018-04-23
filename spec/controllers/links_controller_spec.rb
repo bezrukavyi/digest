@@ -1,4 +1,4 @@
-describe LinksController, type: :controller do
+describe Api::V1::LinksController, type: :controller do
   let!(:link) { create(:link) }
 
   describe 'GET #show' do

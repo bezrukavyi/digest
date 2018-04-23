@@ -1,14 +1,16 @@
 module Subscriptions
-  class FetchFromUser < Trailblazer::Operation
+  class FetchFromUser < BaseOperation
+    attr_env :current_user
+
     step Policy::Guard(:check_user)
     step :extract_collection
 
-    def check_user(env, params:, **)
-      env[:current_user]
+    def check_user(*)
+      current_user
     end
 
-    def extract_collection(env, params:, **)
-      env[:model] = env[:current_user].subscriptions
+    def extract_collection(*)
+      self.model = current_user.subscriptions
     end
   end
 end

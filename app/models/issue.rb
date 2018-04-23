@@ -5,12 +5,12 @@ class Issue < ApplicationRecord
   belongs_to :mailing_list
   has_many :subtitles, dependent: :destroy
   has_many :issue_items, dependent: :destroy
+  has_many :top_items, -> { top }, class_name: IssueItem.name
+  has_many :subtitles_items, through: :subtitles, source: :issue_items
 
   scope :awaiting, -> { where(published: false).where('release_at <= ?', Time.zone.now) }
   scope :released, -> { where(published: true) }
   scope :newest, -> { order(created_at: :desc) }
-
-  # validates :name, presence: true
 
   before_create :increment_release
 

@@ -1,33 +1,24 @@
 module Api::V1::Dashboard
-  class MailingListsController < Api::V1::ApplicationController
+  class MailingListsController < Api::V1::Dashboard::ApplicationController
     def show
       @result = MailingLists::Find.call(options)
-      respond_to_result
+      respond_to_result serializer: Dashboard::MailingLists::EntitySerializer
     end
 
     def index
       @collection = MailingLists::ScopePolicy.new(current_user).index
-      respond_with @collection
-    end
-
-    def new
-      @result = MailingLists::New.call(options)
-      respond_to_result
+      respond_with Dashboard::MailingLists::CollectionSerializer.new(@collection).serialized_json
     end
 
     def create
-      @result = MailingLists::Create.call(options)
-      respond_to_result
-    end
-
-    def edit
-      @result = MailingLists::Edit.call(options)
-      respond_to_result
+      @result = MailingLists::Create.call(options.merge(params: permit_params))
+      respond_to_result serializer: Dashboard::MailingLists::EntitySerializer
     end
 
     def update
-      @result = MailingLists::Update.call(options)
-      respond_to_result
+      @result = MailingLists::Update.call(options.merge(params: permit_params))
+      binding.pry
+      respond_to_result serializer: Dashboard::MailingLists::EntitySerializer
     end
 
     def destroy
@@ -40,9 +31,13 @@ module Api::V1::Dashboard
     def options
       {
         id: params[:id],
-        params: params[:mailing_list] || {},
+        params: {},
         current_user: current_user
       }
+    end
+
+    def permit_params
+      params.permit(:name, :description, :slug)
     end
   end
 end

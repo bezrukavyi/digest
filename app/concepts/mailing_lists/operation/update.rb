@@ -1,5 +1,5 @@
 module MailingLists
-  class Update < Trailblazer::Operation
+  class Update < BaseOperation
     PRESENT = ->(*) { MailingLists::Edit }
 
     step Nested(PRESENT)

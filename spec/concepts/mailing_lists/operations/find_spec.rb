@@ -14,12 +14,5 @@ describe MailingLists::Find, type: :operation do
       expect(subject[:model]).to be_nil
       expect(subject).to be_failure
     end
-
-    it 'not authorized' do
-      subject = described_class.call(params: {}, current_user: nil, id: mailing_list.id)
-      expect(subject[:model]).not_to be_nil
-      expect(subject['result.policy.default']).to be_failure
-      expect(subject).to be_failure
-    end
   end
 end

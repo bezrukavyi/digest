@@ -7,6 +7,4 @@ class IssueItem < ApplicationRecord
   has_one :link, dependent: :destroy
 
   scope :top, -> { where(subtitle: nil) }
-
-  # validates :issue, presence: true
 end
